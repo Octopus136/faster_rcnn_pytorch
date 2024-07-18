@@ -1,5 +1,8 @@
 # faster_rcnn_pytorch
-Faster R-CNN implementation based on PyTorch higher version
+Faster R-CNN implementation based on PyTorch higher version.
+
+Currently backbone only supports resnet50. Added yolov7-like progress bar to training.
+
 # run example
 
 ## train
@@ -24,4 +27,4 @@ python detect.py --weight model.pt --source dataset/detect --thickness 2
 
 1. Add test code;
 2. Store the first few epochs of plots for observation during training;
-3. Support for backbone replacement
+3. Support for backbone replacement.
