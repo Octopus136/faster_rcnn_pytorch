@@ -71,6 +71,7 @@ def launch(train_root, test_root, batch_size, is_cuda, num_epochs, save_path):
         with torch.no_grad():
             s = ('%20s' + '%12s' * 6) % ('Class', 'Images', 'Labels', 'P', 'R', 'mAP@.5', 'mAP@.5:.95')
             seen, nt = 0, 0
+            mp, mr, map50, map = 0.0, 0.0, 0.0, 0.0
             for images, targets in tqdm.tqdm(test_data_loader, total=len(test_data_loader), desc=s):
                 images = list(torch.tensor(image).to(device) for image in images)
                 images = [image / 255.0 for image in images]
@@ -95,6 +96,7 @@ def launch(train_root, test_root, batch_size, is_cuda, num_epochs, save_path):
 
                     boxes = nms(boxes, 0.6)
                     nt += len(boxes)
+                    boxes = [[box[0].item(), box[1].item(), box[2].item(), box[3].item(), box[4].item(), box[5].item()] for box in boxes]
                     p, r, ap50, ap = ap_per_class(boxes, gt, nc)
                     batch_map += ap
                     mp += p
