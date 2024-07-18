@@ -77,9 +77,10 @@ def launch(train_root, test_root, batch_size, is_cuda, num_epochs, save_path):
                 images = [image.permute(2, 0, 1) for image in images]
                 gt = []
                 for t in targets:
-                    boxes = t["boxes"]
-                    labels = t["labels"]
-                    gt.append(labels, boxes[0], boxes[1], boxes[2], boxes[3]) # labels, x1, y1, x2, y2
+                    bb = t["boxes"]
+                    ll = t["labels"]
+                    for i, b in enumerate(bb):
+                        gt.append([ll[i], b[0].item(), b[1].item(), b[2].item(), b[3].item()]) # labels, x1, y1, x2, y2
                 targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
                 out = model(images, targets)
                 batch_map = 0
