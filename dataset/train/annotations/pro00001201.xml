@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<annotation>
+	<database>The 114Xray Database</database>
+	<owner>MVLab_and_Insight</owner>
+	<filename>pro00001201.jpg</filename>
+	<size>
+		<width>290</width>
+		<height>323</height>
+		<depth>3</depth>
+	</size>
+	<object>
+		<name>suspiciousliquid2</name>
+		<bndbox>
+			<xmin>50</xmin>
+			<ymin>29</ymin>
+			<xmax>189</xmax>
+			<ymax>227</ymax>
+		</bndbox>
+	</object>
+</annotation>
